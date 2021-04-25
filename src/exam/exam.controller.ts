@@ -9,4 +9,9 @@ export class ExamController {
   getHello(): string {
     return this.examService.getHello();
   }
+
+  @Get('/find')
+  getFindAll(): string {
+    return this.examService.findAll().toString();
+  }
 }
