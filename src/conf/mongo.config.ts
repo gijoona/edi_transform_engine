@@ -5,7 +5,7 @@ import { MongooseModuleOptions, MongooseOptionsFactory } from "@nestjs/mongoose"
 export class MongoConfig implements MongooseOptionsFactory {
   createMongooseOptions(): MongooseModuleOptions {
     return {
-      uri: 'mongodb://root:example@localhost:27017/'
+      uri: 'mongodb://hitops:storagepwd@172.16.3.90:27017/EDI'
     }
   }
 }

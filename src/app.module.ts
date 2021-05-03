@@ -1,14 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ExamModule } from './exam/exam.module';
-import { MongoConfig } from './conf/mongo.config';
+import { MongoModule } from './exam/mongo/mongo.module';
 
 @Module({
   imports: [
-    ExamModule,
-    MongooseModule.forRootAsync({
-      useClass: MongoConfig
-    })
+    MongoModule
   ]
 })
 export class AppModule {}
