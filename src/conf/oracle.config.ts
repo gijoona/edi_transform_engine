@@ -8,7 +8,9 @@ export class OracleConfig implements TypeOrmOptionsFactory {
       type: 'oracle',
       username: 'system',
       password: 'oracle',
-      connectString: 'localhost:1521/xe'
+      connectString: 'localhost:1521/xe',
+      autoLoadEntities: true,
+      entities: [__dirname + '/**/*.entity{.ts,.js}']
     }
   }
 }
