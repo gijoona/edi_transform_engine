@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MongoModule } from './exam/mongo/mongo.module';
-import { OracleModule } from './exam/oracle/oracle.module';
+import { ExamModule } from './exam/exam.module';
 
 @Module({
   imports: [
-    OracleModule,
-    MongoModule
+    ExamModule
   ]
 })
 export class AppModule {}
