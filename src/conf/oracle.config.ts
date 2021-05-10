@@ -6,9 +6,10 @@ export class OracleConfig implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       type: 'oracle',
-      username: 'system',
-      password: 'oracle',
-      connectString: 'localhost:1521/xe'
+      username: 'PSATOS',
+      password: 'psa!2#$1',
+      connectString: '172.16.3.103:1521/PSADEVDB',
+      synchronize: true
     }
   }
 }
