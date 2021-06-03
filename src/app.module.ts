@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ExamModule } from './exam/exam.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TransModule } from './trans/trans.module';
 
 @Module({
   imports: [
-    ExamModule
+    ScheduleModule.forRoot(),
+    TransModule
   ]
 })
 export class AppModule {}

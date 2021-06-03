@@ -1,16 +1,13 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity("EDC_EDI_RCV_SBU")
-export class EdiBackupData {
+@Entity("EDC_EDI_RCV_BACKUP_MSG")
+export class EdiRcv {
     @PrimaryColumn({name: 'TMN_COD'})
     tmnCod: string;
     
     @PrimaryColumn({name: 'MSG_SEQ'})
     msgSeq: string;
     
-    // @Column({name: 'TYPE'})
-    // type: string;
-
     @Column({name: 'DOC_ID'})
     docId: string;
 

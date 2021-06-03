@@ -10,8 +10,7 @@ export class OracleConfig implements TypeOrmOptionsFactory {
       password: 'psa!2#$1',
       connectString: '172.16.3.103:1521/PSADEVDB',
       autoLoadEntities: true,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true
+      entities: [__dirname + '/**/*.entity{.ts,.js}']
     }
   }
 }
