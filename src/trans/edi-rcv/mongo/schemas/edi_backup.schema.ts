@@ -37,6 +37,12 @@ export class EdiBackup {
 
   @Prop()
   updateDte: Date;
+
+  @Prop()
+  backupTag: string;
+
+  @Prop()
+  backupErrMsg: string;
 }
 
 export const EdiBackupSchema = SchemaFactory.createForClass(EdiBackup);

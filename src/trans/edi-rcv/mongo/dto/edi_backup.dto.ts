@@ -10,4 +10,6 @@ export class EdiBackupDto {
   readonly inputDte: Date;
   readonly updatePsn: string;
   readonly updateDte: Date;
+  readonly backupTag: string;
+  readonly backupErrMsg: string;
 }

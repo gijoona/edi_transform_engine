@@ -19,15 +19,21 @@ export class EdiRcvService {
     @InjectRepository(EdiRcv) private ediRcvRepository: Repository<EdiRcv>
   ) {}
 
-  // STEP1. scheduler를 통해 일정주기로 요청되도록 처리
+  // STEP1. scheduler를 통해 일정주기로 요청되도록 처리(5초에 한번씩 동작)
   // STEP2. Oracle의 EDC_EDI_RCV_SBU 데이터 조회
   // STEP3. MongoDB의 EdiBackups에 저장
-  // STEP4. Oracle의 데이터 삭제 -- 테스트 중에는 삭제는 하지 않도록 함.
+  //    - 백업 중 오류 발생 시 Oracle에 오류처리
+  //      {
+  //        BACKUP_TAG: 'E',
+  //        BACKUP_ERR_MSG: 오류메시지
+  //      }
+  // STEP4. Oracle의 데이터 삭제
+  //    - 테스트 중에는 삭제하지 않고 상태만 갱신함.
   @Cron(CronExpression.EVERY_5_SECONDS)
   async ediRcvBackup() {
     this.ediRcvRepository
         .find({
-          resultTag: 'N'
+          backupTag: 'N'
         })
         .then((rcvDatas: EdiRcv[]) => {
           for (let rd of rcvDatas) {
@@ -50,7 +56,9 @@ export class EdiRcvService {
         ptnId: ediRcv.ptnId
       },
       {
-        resultTag: 'Y'
+        updatePsn: 'ETE',
+        updateDte: () => 'SYSDATE',
+        backupTag: 'Y'
       }
     )
   }

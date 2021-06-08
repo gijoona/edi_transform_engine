@@ -34,4 +34,10 @@ export class EdiRcv {
 
     @Column({name: 'UPDATE_DTE'})
     updateDte: Date;
+
+    @Column({name: 'BACKUP_TAG'})
+    backupTag: string;
+
+    @Column({name: 'BACKUP_ERR_MSG'})
+    backupErrMsg: string;
 }
