@@ -7,8 +7,12 @@ export class OracleConfig implements TypeOrmOptionsFactory {
     return {
       type: 'oracle',
       username: 'PSATOS',
-      password: 'psa!2#$1',
-      connectString: '172.16.3.103:1521/PSADEVDB',
+      // TEST
+      // password: 'psa!2#$1',
+      // connectString: '172.16.3.103:1521/PSADEVDB',
+      // REAL
+      password: 'Psatos4%6!',
+      connectString: '172.16.3.231:1521/PSADB',
       autoLoadEntities: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}']
     }

@@ -21,6 +21,15 @@ export class EdiBackup {
   ptnId: string;
 
   @Prop()
+  transTyp: string;
+
+  @Prop()
+  ediTyp: string;
+
+  @Prop()
+  ediErrMsg: string;
+
+  @Prop()
   contents: string;
 
   @Prop()

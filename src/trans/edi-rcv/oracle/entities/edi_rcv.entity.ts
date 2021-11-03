@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity("EDC_EDI_RCV_BACKUP_MSG")
+@Entity("EDC_EDI_ETE_BACKUP_MSG")
 export class EdiRcv {
     /**
      * 터미널 코드

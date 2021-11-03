@@ -31,6 +31,8 @@ export class EdiRcvService {
   //    - 테스트 중에는 삭제하지 않고 상태만 갱신함.
   @Cron(CronExpression.EVERY_5_SECONDS)
   async ediRcvBackup() {
+    const isTEST = false;
+
     this.ediRcvRepository
         .find({
           backupTag: 'N'
@@ -38,7 +40,9 @@ export class EdiRcvService {
         .then((rcvDatas: EdiRcv[]) => {
           for (let rd of rcvDatas) {
             this.rcvBackupCreate(rd);
-            this.rcvBackupComplete(rd);
+            
+            if (isTEST) this.rcvBackupCompleteTEST(rd);
+            else this.rcvBackupComplete(rd);
           }
         })
   }
@@ -47,7 +51,7 @@ export class EdiRcvService {
     return this.ediRcvRepository.find();
   }
 
-  async rcvBackupComplete(ediRcv: EdiRcv) {
+  async rcvBackupCompleteTEST(ediRcv: EdiRcv) {
     await this.ediRcvRepository.update(
       {
         tmnCod: ediRcv.tmnCod,
@@ -59,6 +63,17 @@ export class EdiRcvService {
         updatePsn: 'ETE',
         updateDte: () => 'SYSDATE',
         backupTag: 'Y'
+      }
+    )
+  }
+  
+  async rcvBackupComplete(ediRcv: EdiRcv) {
+    await this.ediRcvRepository.delete(
+      {
+        tmnCod: ediRcv.tmnCod,
+        msgSeq: ediRcv.msgSeq,
+        docId: ediRcv.docId,
+        ptnId: ediRcv.ptnId
       }
     )
   }
